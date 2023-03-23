@@ -33,3 +33,4 @@ mongoose.connection.on("error", (error: Error) => console.log(error.message))
 app.use("/", router())
 
 // https://dev.to/nedsoft/testing-nodejs-express-api-with-jest-and-supertest-1km6
+// https://javascript.plainenglish.io/how-to-schedule-emails-with-node-js-31e9a61e7c57

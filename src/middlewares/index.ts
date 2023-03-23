@@ -1,26 +1,26 @@
 import express from "express";
 import { get, merge } from "lodash";
 
+import { getAuthenticatedUserId } from "../helpers";
 import { getUserBySessionToken } from "../db/users";
 
 export const isOwner = async (req: express.Request, res: express.Response, next: express.NextFunction) => {
    try {
-      const { id } = req.params;
-
       const sessionToken = req.cookies["Bearer"];
       if (!sessionToken) {
-         return res.status(403).json("Authentication failed");
+         throw new Error("Authentication failed");
       }
-
-      const existingUser = await getUserBySessionToken(sessionToken).select("+authentication.salt +authentication.password");
-      if (!existingUser) {
-         return res.status(403).json("Wrong session token");
-      }
-      const {_id: currentUserId} = existingUser;
+      const currentUserId = await getAuthenticatedUserId(sessionToken);
       if (!currentUserId) {
         return res.status(400).json("No id is given");
       }
-  
+
+      let id;
+      if (req.params.id) {
+         id = req.params.id;
+      } else {
+         id = req.body.patientId;
+      }
       if (currentUserId.toString() !== id) {
         return res.status(403).json("Authentication failure");
       }

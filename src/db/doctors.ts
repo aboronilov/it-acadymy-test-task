@@ -12,7 +12,10 @@ const DoctorSchema = new mongoose.Schema({
    occupation: {type: String, requiered: true},
    appointmentIds: [
       { type: String }
-   ]   
+   ],
+   busy: [
+      { type: String }
+   ]
 })
 
 const DoctorModel = mongoose.model("Doctor", DoctorSchema)
