@@ -34,10 +34,10 @@
 Если не заполнено хотя бы одно из полей, введен некорректный email или подобный аккуаунт уже есть - отработает валидация
 
 ```Please provide the valid email```
-или
+
 ```name, middlename, surname, email, password must be provided```
 
-![reminder](https://github.com/aboronilov/it-acadymy-test-task/blob/main/public/reminder.JPG)
+```User with email aboronilov@gmail.com already exists```
 
 2. После этого пользователя нужно залогинить. Endpoint ```/auth/login``` ожидает POST запрос с телом:
 
@@ -89,6 +89,8 @@ PATCH ожидает тело:
    - если у выбранного доктора уже есть на это время запись
 
 6. В случае успешной записи в условленное время выводятся оповещния
+
+![reminder](https://github.com/aboronilov/it-acadymy-test-task/blob/main/public/reminder.JPG)
 
 7. Авторизованные пользователи могут посмотреть список назначений GET запросом на endpoint ```/api/appointments```
 
