@@ -1,14 +1,8 @@
 import mongoose from 'mongoose';
 import moment from "moment"
 
-const AppointmentSchema = new mongoose.Schema({
+const AppointmentSchema = new mongoose.Schema({   
    start: {type: String, required: true},
-   end: {
-      type: String,
-      default: function() {
-         return moment(this.start).add(1, "hour")
-    }
-   },
    doctorId: {type: String, required: true},
    patientId: {type: String, required: true},
    reason: {type: String, required: true}
