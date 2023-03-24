@@ -2,7 +2,6 @@ import express from "express";
 import mongoose from "mongoose"
 import moment from "moment"
 import * as dotenv from "dotenv"
-import emailjs from "@emailjs/browser";
 
 dotenv.config()
 
@@ -63,7 +62,8 @@ export const createNewAppointment = async (req: express.Request, res: express.Re
          Уважаемый пациент ${name} ${middlename} ${surname} \n
          Администрация клиники ООО "Будь здоров" напоминает вам о записи на прием по адресу пр. Вернадского, 37, к.1А, Москва в ${localTime} (время местное) \n
          Прием проводит ${occupation} ${doctorName} ${doctorMiddleName} ${doctorSurname} \n
-         C пожеланиями скорейшего выздоровления\n`
+         C пожеланиями скорейшего выздоровления\n
+      `
       
       const reminderTime1 = moment(localTime).subtract(1, "day");
       if (reminderTime1.isAfter(now)) {
