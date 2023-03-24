@@ -90,8 +90,6 @@ PATCH ожидает тело:
 
 6. В случае успешной записи в условленное время выводятся оповещния
 
-![reminder](https://github.com/aboronilov/it-acadymy-test-task/blob/main/public/reminder.JPG)
-
 7. Авторизованные пользователи могут посмотреть список назначений GET запросом на endpoint ```/api/appointments```
 
 8. Авторизованный пользователь, которому назначен прием, может посмотреть свое назначение GET запросом на endpoint ```/api/appointments/{id}```
