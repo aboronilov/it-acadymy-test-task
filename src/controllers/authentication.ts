@@ -26,7 +26,14 @@ export const login = async (req: express.Request, res: express.Response) => {
       await user.save()
 
       res.cookie('Bearer', user.authentication.sessionToken, { domain , path: '/' });
-      return res.status(200).json(user)
+      const userToShow = {
+         id: user._id,
+         email: user.email,
+         name: user.name,
+         middlename: user.middlename,
+         surname: user.surname
+      }
+      return res.status(200).json({user: userToShow})
    } catch (error: any) {
       console.log(`Login error - ${error.message}`);
       return res.status(500).json({msg: error.message});
@@ -62,7 +69,14 @@ export const register = async (req: express.Request, res: express.Response) => {
          },
       });
 
-      return res.status(201).json(user)
+      const userToShow = {
+         id: user._id,
+         email: user.email,
+         name: user.name,
+         middlename: user.middlename,
+         surname: user.surname
+      }
+      return res.status(201).json({user: userToShow})
 
    } catch (error: any) {
       console.log(`Register error - ${error.message}`);
